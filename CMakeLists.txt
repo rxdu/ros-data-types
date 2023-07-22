@@ -24,33 +24,26 @@ set(USER_CMAKE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 list(APPEND CMAKE_PREFIX_PATH "/usr/lib/${CMAKE_SYSTEM_PROCESSOR}-linux-gnu/cmake")
 list(APPEND CMAKE_PREFIX_PATH "/opt/weston_robot/lib/cmake")
 
+# # Set compiler to use c++ 14 features
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 find_package(CycloneDDS REQUIRED)
 
 ## Build FastRTPS types
-message(STATUS "------------------------------------------------------")
 include(${USER_CMAKE_PATH}/cyclone_idlc_generate.cmake)
-#rtpstypes_build(${BUILD_ROS2IDL})
-message(STATUS "------------------------------------------------------")
 
+# # Use GNUInstallDirs to install libraries into correct locations on all platforms.
+include(GNUInstallDirs)
 
-#set(CMAKE_MODULE_PATH
-#    ${CMAKE_MODULE_PATH}
-#    "${CMAKE_CURRENT_SOURCE_DIR}/resources/cmake")
-#
-#find_package(RTIConnextDDS)
-#include(CMakePackageConfigHelpers)
-#include(ConnextDdsRosDdsTypes)
-
-
-
-if (NOT LANG)
-    set(LANG "C++11")
-endif()
+# # Put all binary files into /bin and libraries into /lib
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
 set (top_level_binary_dir "${CMAKE_CURRENT_BINARY_DIR}/")
 set (top_level_source_dir "${CMAKE_CURRENT_SOURCE_DIR}/")
-
-#connextdds_sanitize_library_language(LANG ${LANG} VAR lang_var)
 
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/action_msgs")
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/action_tutorials_interfaces")
@@ -78,7 +71,7 @@ add_subdirectory(idl/builtin_interfaces)
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/sensor_msgs")
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/shape_msgs")
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/statistics_msgs")
-#add_subdirectory(idl/std_msgs)
+add_subdirectory(idl/std_msgs)
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/std_srvs")
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/stereo_msgs")
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/test_communication")

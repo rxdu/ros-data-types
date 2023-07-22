@@ -13,7 +13,7 @@
 function(cyclone_idlc_generate)
     set(options NO_TYPE_INFO)
     set(one_value_keywords TARGET MODULE DEFAULT_EXTENSIBILITY)
-    set(multi_value_keywords FILES FEATURES INCLUDES WARNINGS)
+    set(multi_value_keywords FILES FEATURES INCLUDES DEPENDS WARNINGS)
     cmake_parse_arguments(
             IDLC "${options}" "${one_value_keywords}" "${multi_value_keywords}" "" ${ARGN})
 
@@ -24,6 +24,7 @@ function(cyclone_idlc_generate)
             MODULE ${IDLC_MODULE}
             FEATURES ${IDLC_FEATURES}
             INCLUDES ${IDLC_INCLUDES}
+            DEPENDS ${IDLC_DEPENDS}
             WARNINGS ${IDLC_WARNINGS}
             DEFAULT_EXTENSIBILITY ${IDLC_DEFAULT_EXTENSIBILITY})
     if(${IDLC_NO_TYPE_INFO})
@@ -51,7 +52,7 @@ function(cyclone_idlc_generate_generic)
         endif()
     else()
         set(_idlc_executable idlc)
-        set(_idlc_depends idlc)
+#        set(_idlc_depends idlc)
     endif()
 
     if(NOT IDLC_TARGET AND NOT IDLC_FILES)
@@ -123,12 +124,6 @@ function(cyclone_idlc_generate_generic)
         list(APPEND _files "${_path}")
     endforeach()
 
-#    # set source suffixes (defaults to .c and .h)
-#    if(NOT IDLC_SUFFIXES)
-#        set(IDLC_SUFFIXES ".c" ".h")
-#    endif()
-#    set(_outputs "")
-
     # generate files from idl
     foreach(_file ${_files})
         get_filename_component(_name ${_file} NAME_WE)
@@ -155,10 +150,14 @@ function(cyclone_idlc_generate_generic)
     file(COPY ${generated_source} DESTINATION
             ${MODULE_TARGET_DIR}/src)
 
+    message(STATUS "--> depends: ${_depends}")
+    message(STATUS "--> include: ${MODULE_TARGET_DIR}/include/${IDLC_MODULE}/msg")
+    message(STATUS "--> depends: ${_target} PUBLIC ${_depends} CycloneDDS::ddsc")
+
     # build target library
     file(GLOB_RECURSE MODULE_LIB_SRC ${MODULE_TARGET_DIR}/src/*.c)
     add_library(${_target} ${MODULE_LIB_SRC})
-    target_link_libraries(${_target} PUBLIC CycloneDDS::ddsc)
+    target_link_libraries(${_target} PUBLIC ${_depends} CycloneDDS::ddsc)
     target_include_directories(${_target} PUBLIC
             $<BUILD_INTERFACE:${MODULE_TARGET_DIR}/include>
             $<BUILD_INTERFACE:${MODULE_TARGET_DIR}/include/${IDLC_MODULE}/msg>
