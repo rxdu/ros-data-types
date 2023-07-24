@@ -1,4 +1,4 @@
-# ROS Data Types
+# ROS2 IDL Data Types
 
 This repository contains a rich set of ROS data types in
 [OMG IDL](https://www.omg.org/spec/IDL) format. These types enable you to

@@ -45,97 +45,43 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}
 set (top_level_binary_dir "${CMAKE_CURRENT_BINARY_DIR}/")
 set (top_level_source_dir "${CMAKE_CURRENT_SOURCE_DIR}/")
 
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/action_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/action_tutorials_interfaces")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/actionlib_msgs")
+#add_subdirectory(idl/action_msgs)
+#add_subdirectory(idl/action_tutorials_interfaces)
+#add_subdirectory(idl/actionlib_msgs)
 add_subdirectory(idl/builtin_interfaces)
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/composition_interfaces")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/diagnostic_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/example_interfaces")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/gazebo_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/geometry_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/lgsvl_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/libstatistics_collector")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/lifecycle_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/logging_demo")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/map_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/move_base_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/nav_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/pendulum_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/rcl_interfaces")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/rclcpp")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/rmw_dds_common")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/rosgraph_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/rosidl_generator_py")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/rqt_py_common")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/sensor_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/shape_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/statistics_msgs")
+#add_subdirectory(idl/composition_interfaces)
+#add_subdirectory(idl/diagnostic_msgs)
+#add_subdirectory(idl/example_interfaces)
+#add_subdirectory(idl/gazebo_msgs)
+add_subdirectory(idl/geometry_msgs)
+#add_subdirectory(idl/lgsvl_msgs)
+#add_subdirectory(idl/libstatistics_collector)
+#add_subdirectory(idl/lifecycle_msgs)
+#add_subdirectory(idl/logging_demo)
+#add_subdirectory(idl/map_msgs)
+#add_subdirectory(idl/move_base_msgs)
+#add_subdirectory(idl/nav_msgs)
+#add_subdirectory(idl/pendulum_msgs)
+#add_subdirectory(idl/rcl_interfaces)
+#add_subdirectory(idl/rclcpp)
+#add_subdirectory(idl/rmw_dds_common)
+#add_subdirectory(idl/rosgraph_msgs)
+#add_subdirectory(idl/rosidl_generator_py)
+#add_subdirectory(idl/rqt_py_common)
+#add_subdirectory(idl/sensor_msgs)
+#add_subdirectory(idl/shape_msgs)
+#add_subdirectory(idl/statistics_msgs)
 add_subdirectory(idl/std_msgs)
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/std_srvs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/stereo_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/test_communication")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/test_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/test_rclcpp")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/tf2_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/trajectory_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/turtlesim")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/unique_identifier_msgs")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/visualization_msgs")
-
-#add_library(RosDataTypes
-#    $<TARGET_OBJECTS:actionmsgslibrary>
-#    $<TARGET_OBJECTS:actiontutorialsinterfaceslibrary>
-#    $<TARGET_OBJECTS:actionlibmsgslibrary>
-#    $<TARGET_OBJECTS:builtininterfaceslibrary>
-#    $<TARGET_OBJECTS:compositioninterfaceslibrary>
-#    $<TARGET_OBJECTS:diagnosticmsgslibrary>
-#    $<TARGET_OBJECTS:exampleinterfaceslibrary>
-#    $<TARGET_OBJECTS:gazebomsgslibrary>
-#    $<TARGET_OBJECTS:geometrymsgslibrary>
-#    $<TARGET_OBJECTS:lgsvlmsgslibrary>
-#    $<TARGET_OBJECTS:libstatisticscollectorlibrary>
-#    $<TARGET_OBJECTS:lifecyclemsgslibrary>
-#    $<TARGET_OBJECTS:loggingdemolibrary>
-#    $<TARGET_OBJECTS:mapmsgslibrary>
-#    $<TARGET_OBJECTS:movebasemsgslibrary>
-#    $<TARGET_OBJECTS:navmsgslibrary>
-#    $<TARGET_OBJECTS:pendulummsgslibrary>
-#    $<TARGET_OBJECTS:rclinterfaceslibrary>
-#    $<TARGET_OBJECTS:rclcpplibrary>
-#    $<TARGET_OBJECTS:rmwddscommonlibrary>
-#    $<TARGET_OBJECTS:rosgraphmsgslibrary>
-#    $<TARGET_OBJECTS:rosidlgeneratorpylibrary>
-#    $<TARGET_OBJECTS:rqtpycommonlibrary>
-#    $<TARGET_OBJECTS:sensormsgslibrary>
-#    $<TARGET_OBJECTS:shapemsgslibrary>
-#    $<TARGET_OBJECTS:statisticsmsgslibrary>
-#    $<TARGET_OBJECTS:stdmsgslibrary>
-#    $<TARGET_OBJECTS:stdsrvslibrary>
-#    $<TARGET_OBJECTS:stereomsgslibrary>
-#    $<TARGET_OBJECTS:testcommunicationlibrary>
-#    $<TARGET_OBJECTS:testmsgslibrary>
-#    $<TARGET_OBJECTS:testrclcpplibrary>
-#    $<TARGET_OBJECTS:tf2msgslibrary>
-#    $<TARGET_OBJECTS:trajectorymsgslibrary>
-#    $<TARGET_OBJECTS:turtlesimlibrary>
-#    $<TARGET_OBJECTS:uniqueidentifiermsgslibrary>
-#    $<TARGET_OBJECTS:visualizationmsgslibrary>
-#)
-
-#target_link_libraries(RosDataTypes
-#    ${CONNEXTDDS_${lang_var}_API_LIBRARIES_RELEASE_SHARED}
-#    ${CONNEXTDDS_EXTERNAL_LIBS}
-#)
-#
-#target_include_directories(RosDataTypes PUBLIC
-#    ${CONNEXTDDS_INCLUDE_DIRS}
-#    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/>
-#)
-#
-#target_compile_definitions(RosDataTypes PRIVATE
-#    ${CONNEXTDDS_COMPILE_DEFINITIONS}
-#)
+#add_subdirectory(idl/std_srvs)
+#add_subdirectory(idl/stereo_msgs)
+#add_subdirectory(idl/test_communication)
+#add_subdirectory(idl/test_msgs)
+#add_subdirectory(idl/test_rclcpp)
+#add_subdirectory(idl/tf2_msgs)
+#add_subdirectory(idl/trajectory_msgs)
+#add_subdirectory(idl/turtlesim)
+#add_subdirectory(idl/unique_identifier_msgs)
+#add_subdirectory(idl/visualization_msgs)
 
 # Set configuration variables
 #set(version_config
